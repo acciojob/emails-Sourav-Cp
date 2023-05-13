@@ -9,7 +9,8 @@ public class Gmail extends Email {
     //Inbox: Stores mails. Each mail has date (Date), sender (String), message (String). It is guaranteed that message is distinct for all mails.
     //Trash: Stores mails. Each mail has date (Date), sender (String), message (String)
     public Gmail(String emailId, int inboxCapacity) {
-
+        super(emailId);
+        this.inboxCapacity = inboxCapacity;
     }
 
     public void receiveMail(Date date, String sender, String message){
@@ -17,6 +18,7 @@ public class Gmail extends Email {
         // It is guaranteed that:
         // 1. Each mail in the inbox is distinct.
         // 2. The mails are received in non-decreasing order. This means that the date of a new mail is greater than equal to the dates of mails received already.
+
 
     }
 
@@ -61,5 +63,6 @@ public class Gmail extends Email {
 
     public int getInboxCapacity() {
         // Return the maximum number of mails that can be stored in the inbox
+        return inboxCapacity;
     }
 }
