@@ -30,11 +30,11 @@ public class Email {
             if(isValid(newPassword))
             {
                 this.password = newPassword;
-                System.out.println("Password Changed");
+              //  System.out.println("Password Changed");
             }
-            else System.out.println("Password given doesn't matches criteria");
+           // else System.out.println("Password given doesn't matches criteria");
         }
-        else System.out.println("Password doesn't matches current password");
+       // else System.out.println("Password doesn't matches current password");
     }
     private boolean isValid(String password)
     {
