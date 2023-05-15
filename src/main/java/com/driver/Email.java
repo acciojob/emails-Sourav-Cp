@@ -25,26 +25,39 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
-
-        if(oldPassword.equals("Accio@123"))
+        if(oldPassword.equals(this.password))
         {
-            int uc = 0;
-            int lc = 0;
-            int sc = 0;
-            int dig = 0;
-            int n = newPassword.length();
-
-            if(n < 8) return;
-           for(int i = 0;i < n;i++)
-           {
-             int ch = newPassword.charAt(i);
-             if('0' <= ch && ch <= '9') dig++;
-             else if('a'<= ch && ch <= 'z') lc++;
-             else if('A'<= ch && ch <= 'Z') uc++;
-             else sc++;
-           }
-           if(dig == 0 || lc == 0 || uc == 0 || sc == 0) return;
-           else this.password = newPassword;
+            if(isValid(newPassword))
+            {
+                this.password = newPassword;
+                System.out.println("Password Changed");
+            }
+            else System.out.println("Password given doesn't matches criteria");
         }
+        else System.out.println("Password doesn't matches current password");
+    }
+    private boolean isValid(String password)
+    {
+        int n = password.length();
+        if(n < 8) return false;
+
+        boolean uppercase = false;
+        boolean lowercase = false;
+        boolean digit  = false;
+        boolean specialChar = false;
+
+        for(int i=0;i<n;i++)
+        {
+            char ch = password.charAt(i);
+
+            if('0'<= ch && ch <= '9') digit = true;
+
+            else if('a'<= ch && ch >= 'z') lowercase = true;
+
+            else if('A' <= ch && ch >= 'Z') uppercase = true;
+
+            else specialChar = true;
+        }
+        return digit && lowercase && uppercase && specialChar;
     }
 }
